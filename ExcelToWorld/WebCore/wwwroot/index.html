@@ -1,0 +1,24 @@
+﻿<div ng-controller="IndexController">
+    <table class="table">
+        <tr><td colspan="2"><h1 style="text-align: center;">Excel转换Word</h1></td></tr>
+        <tr>
+            <td>Word模板：<input type="checkbox" />默认模板<a href="#"><img src="Style/img/281709.png" alt="预览" title="预览" style="width:16px;height:16px" /></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="javascript:;" class="file">
+                    选择文件
+                    <input type="file" multiple>
+                </a>
+            </td>
+            <td>
+                <input type="button" value="开始转换" class="btn btn-primary" ng-click="upload()" />
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+    </table>
+</div>
