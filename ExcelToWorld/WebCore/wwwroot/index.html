@@ -7,13 +7,11 @@
         </tr>
         <tr>
             <td>
-                <a href="javascript:;" class="file">
-                    选择文件
-                    <input type="file" multiple>
-                </a>
+                <input type="file">
             </td>
             <td>
-                <input type="button" value="开始转换" class="btn btn-primary" ng-click="upload()" />
+                <input type="button" value="上传" class="btn btn-primary" ng-show="btnUpload" ng-click="upload()" />
+                <input type="button" value="转换" class="btn btn-outline-success" ng-show="!btnUpload" ng-click="transform()" />
             </td>
         </tr>
 

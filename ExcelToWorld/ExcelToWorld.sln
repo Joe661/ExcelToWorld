@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCore", "WebCore\WebCore.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{A2FB3FBE-2AC0-4BE7-9A2B-9084321EA359}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{1D6B9635-8D8F-434F-AD1E-8D9BA2419DE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A2FB3FBE-2AC0-4BE7-9A2B-9084321EA359}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2FB3FBE-2AC0-4BE7-9A2B-9084321EA359}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2FB3FBE-2AC0-4BE7-9A2B-9084321EA359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D6B9635-8D8F-434F-AD1E-8D9BA2419DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D6B9635-8D8F-434F-AD1E-8D9BA2419DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D6B9635-8D8F-434F-AD1E-8D9BA2419DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D6B9635-8D8F-434F-AD1E-8D9BA2419DE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
