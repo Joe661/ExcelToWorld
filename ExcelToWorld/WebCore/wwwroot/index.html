@@ -1,4 +1,5 @@
-﻿<div ng-controller="IndexController">
+﻿<link type="text/css" href="Style/css/an-skill-bar.css" rel="stylesheet" />
+<div ng-controller="IndexController">
     <table class="table">
         <tr><td colspan="2"><h1 style="text-align: center;">Excel转换Word</h1></td></tr>
         <tr>
@@ -10,13 +11,19 @@
                 <input type="file">
             </td>
             <td>
-                <input type="button" value="上传" class="btn btn-primary" ng-show="btnUpload" ng-click="upload()" />
-                <input type="button" value="转换" class="btn btn-outline-success" ng-show="!btnUpload" ng-click="transform()" />
+                <input type="button" value="转换" class="btn btn-primary" ng-click="upload()" />
+                <!--<input type="button" value="转换" class="btn btn-outline-success" ng-show="!btnUpload" ng-click="transform()" />-->
+                <input type="button" value="下载Word" class="btn btn-outline-success" ng-show="btnDown" ng-click="download()" />
             </td>
         </tr>
 
         <tr>
-            <td colspan="2"></td>
+            <td colspan="2">
+                <div class="skillbar css" ng-show="percents>0">
+                    <span class="percent">{{percents}}%</span>
+                    <div class="filled" data-width="{{percents}}%" style="width:{{percents}}%"></div>
+                </div>
+            </td>
         </tr>
     </table>
 </div>

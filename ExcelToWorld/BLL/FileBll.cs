@@ -1,8 +1,11 @@
 ﻿using Common;
+using EntityModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BLL
 {
@@ -14,9 +17,9 @@ namespace BLL
         /// <param name="files"></param>
         /// <param name="hostingEnvironment"></param>
         /// <returns></returns>
-        public ApiResult<string, DBNull> Upload(IFormFileCollection files, IHostingEnvironment hostingEnvironment)
+        public ApiResult<string, PercentModel> Upload(IFormFileCollection files, IHostingEnvironment hostingEnvironment)
         {
-            var result = new ApiResult<string, DBNull>();
+            var result = new ApiResult<string, PercentModel>();
             try
             {
                 if (files.Count == 0)
@@ -27,20 +30,27 @@ namespace BLL
                 else
                 {
                     var file = files[0];//只允许上传一个文件
-                    var path = hostingEnvironment.WebRootPath + @"\upload";
-                    var fileName = file.FileName;
-                    fileName = path + $@"\{fileName}";
-
-                    if (!Directory.Exists(path))
-                        Directory.CreateDirectory(path);
-                    using (FileStream fileStream = System.IO.File.Create(fileName))
+                    var rootPath = hostingEnvironment.WebRootPath + @"\upload";
+                    var ex = file.FileName.Split('.');
+                    if (ex[ex.Length - 1] == "xlsx")
                     {
-                        file.CopyTo(fileStream);
-                        fileStream.Flush();
-                    }
+                        var fileName = DateTime.Now.ToString("yyyyMMddhhmmss") + "." + ex[ex.Length - 1];
+                        var  path= rootPath + $@"\{fileName}";
 
-                    result.success = true;
-                    result.obj = fileName;
+                        Common.CommonMethod.CreateDirectory(rootPath);
+                        using (FileStream fileStream = System.IO.File.Create(path))
+                        {
+                            file.CopyTo(fileStream);
+                            fileStream.Flush();
+                        }
+                        result.success = true;
+                        result.obj = "/upload/"+fileName;
+                    }
+                    else
+                    {
+                        result.message = "请选择上传后缀为.xlsx的文件";
+                        result.success = false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -50,6 +60,26 @@ namespace BLL
             }
 
             return result;
+        }
+
+        public void Transform(string guid,string path, ISession session)
+        {
+            var task1 = new Task(()=> {
+                for (int i = 0; i < 999999999; i++) { }
+                SessionHelper.Set(session, guid, "30");
+            });
+            var task2 = new Task(() => {
+                for (int i = 0; i < 999999999; i++) { }
+                SessionHelper.Set(session, guid, "60");
+            });
+            var task3 = new Task(() => {
+                for (int i = 0; i < 999999999; i++) { }
+                SessionHelper.Set(session, guid, "100");
+            });
+
+            task1.Start();
+            task2.Start();
+            task3.Start();
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Common
+namespace EntityModel
 {
-    public class ApiResult<T,V>
+    public class ApiResult<T, V>
     {
         public T obj { get; set; }
 
